@@ -6,7 +6,7 @@ from gigachat.models import Chat, Messages, MessagesRole
 
 
 # Авторизация в сервисе GigaChat
-chat = GigaChat(credentials='NjU0YzUyYmQtOWVlNC00ZmQ5LWIyMmQtMjA5Y2Q5ZDQ1OWViOjhhYjg1NDYzLWViZDUtNGFhNC05Yzk4LTJjNzMyNmQwYWZmYw==', verify_ssl_certs=False)
+chat = GigaChat(credentials='NjU0YzUyYmQtOWVlNC00ZmQ5LWIGFhNC05Yzk4LTJjNzMyNmQwYWZmYw==', verify_ssl_certs=False)
 
 messages = [
     SystemMessage(
