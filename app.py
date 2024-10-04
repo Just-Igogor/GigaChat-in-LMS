@@ -3,27 +3,6 @@ from flask_login import LoginManager, login_user, current_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from models import User, db
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('profile'))
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        email = request.form['email']
-        user = User.query.filter_by(username=username).first()
-        if user:
-            flash('Username already taken')
-        else:
-            hashed_password = generate_password_hash(password)
-            new_user = User(username=username, password=hashed_password, email=email)
-            db.session.add(new_user)
-            db.session.commit()
-            flash('Account created successfully')
-            return redirect(url_for('login'))
-    return render_template('register.html')
-
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
